@@ -1,0 +1,13 @@
+stages:
+  preparar:
+    cmd: python -m defiende.preparar
+    deps:
+      - data/raw
+      - src/defiende/preparar.py
+      - src/defiende/comun.py
+      - configs/datos.yaml
+    outs:
+      - data/prepared
+    metrics:
+      - evidencias/auditoria.json:
+          cache: false

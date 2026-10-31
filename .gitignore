@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+# Artefactos locales: se recuperan con DVC (datos), MLflow export (runs) y Hugging Face (modelos)
+models/
+hf/
+mlflow.db
+mlruns/
+mlartifacts/
+.recuperacion/

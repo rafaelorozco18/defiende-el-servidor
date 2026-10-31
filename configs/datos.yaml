@@ -1,0 +1,31 @@
+# Procedencia de las particiones publicadas de UNSW-NB15.
+fuente_oficial: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+cita: >-
+  Moustafa, N. y Slay, J. (2015). UNSW-NB15: a comprehensive data set for network
+  intrusion detection systems. MilCIS 2015, IEEE.
+mirror:
+  descripcion: Copia de terceros en Hugging Face Hub, fijada por commit. No autentica contra el archivo oficial.
+  repo: dileepa0011/unsw-nb15
+  revision: 372928170258c7164061782f5992231c9d4f0ae9
+fecha_descarga: "2026-10-31"
+archivos:
+  train:
+    ruta: data/raw/UNSW_NB15_training-set.csv
+    url: https://huggingface.co/datasets/dileepa0011/unsw-nb15/resolve/372928170258c7164061782f5992231c9d4f0ae9/UNSW_NB15_training-set.csv
+    sha256_esperado: bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa
+    filas_esperadas: 175341
+  test:
+    ruta: data/raw/UNSW_NB15_testing-set.csv
+    url: https://huggingface.co/datasets/dileepa0011/unsw-nb15/resolve/372928170258c7164061782f5992231c9d4f0ae9/UNSW_NB15_testing-set.csv
+    sha256_esperado: 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559
+    filas_esperadas: 82332
+
+objetivo: label          # 0 = normal, 1 = ataque (clase positiva)
+excluidas: [id, label, attack_cat]   # id: identificador; attack_cat: revela la respuesta
+categoricas: [proto, service, state]
+
+particion:
+  semilla: 42
+  fraccion_validacion: 0.20
+  # Asignación por grupo de entradas idénticas: sha256(semilla|grupo) mod 10000 < fraccion*10000.
+  # Es determinista y no depende de la versión de scikit-learn ni de numpy.

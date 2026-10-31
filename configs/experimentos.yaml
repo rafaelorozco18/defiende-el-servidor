@@ -1,0 +1,14 @@
+# Configuraciones de experimentos. Todas usan la misma partición (data/prepared) y se comparan
+# en validación con umbral 0.5.
+semilla: 42
+
+experimentos:
+  E1-logreg-base:
+    familia: lineal
+    modelo: logreg
+    preproc: base            # one-hot de categóricas + estandarización
+    params: {C: 1.0, max_iter: 3000}
+    cambio: Referencia sencilla (sin cambio previo).
+    hipotesis: >-
+      Una regresión logística con one-hot y escalado separa buena parte del tráfico,
+      pero las variables de conteo/bytes con colas pesadas limitarán su frontera lineal.

@@ -1,0 +1,32 @@
+schema: '2.0'
+stages:
+  preparar:
+    cmd: python -m defiende.preparar
+    deps:
+    - path: configs/datos.yaml
+      hash: md5
+      md5: 8d59e29ee564c86376ab9e69c6bad6ac
+      size: 1552
+    - path: data/raw
+      hash: md5
+      md5: fe93051ae209ffb0128a31e7a478c009.dir
+      size: 47673818
+      nfiles: 2
+    - path: src/defiende/comun.py
+      hash: md5
+      md5: 315c720e7229f17cfd21e803a9ae64cb
+      size: 4581
+    - path: src/defiende/preparar.py
+      hash: md5
+      md5: a3df6e67da5771fe82eb2df10e346bf8
+      size: 8162
+    outs:
+    - path: data/prepared
+      hash: md5
+      md5: 731ffba210f38c4b5fed86beb0d6eff7.dir
+      size: 65665228
+      nfiles: 4
+    - path: evidencias/auditoria.json
+      hash: md5
+      md5: ea1fda2417faca126db40347b60e4fa6
+      size: 10694
