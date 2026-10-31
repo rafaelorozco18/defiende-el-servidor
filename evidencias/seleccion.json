@@ -78,9 +78,11 @@
     },
     "razon": "E4-hgb tiene el mayor macro-F1 en validación a umbral 0.5 (0.9535). Su FPR a 0.5 (0.0739) supera el máximo operativo de 0.05; el umbral 0.64 es el que da mayor recall de ataque con FPR <= 0.05 en validación.",
     "huggingface": {
-      "repo": null,
-      "revision_sha": null,
-      "tag": null
+      "repo": "Rafoniloni/defiende-el-servidor-unsw",
+      "url": "https://huggingface.co/Rafoniloni/defiende-el-servidor-unsw",
+      "revision_sha": "64fc9774c0779005d65f79c769a4def98258065a",
+      "tag": "v2",
+      "url_revision": "https://huggingface.co/Rafoniloni/defiende-el-servidor-unsw/tree/64fc9774c0779005d65f79c769a4def98258065a"
     }
   },
   "v2_a_umbral_0_5": {
