@@ -1,0 +1,15 @@
+{
+  "filas": 25,
+  "criterio": "25 filas de val con menor sha256(row_id)",
+  "clases": {
+    "0": 9,
+    "1": 16
+  },
+  "hashes": {
+    "entrada_val.csv": "b3161ac7bcf48f4d4b83e1202cda4c63ef6315cafb1657103418a79d680c7c34",
+    "referencia_v1.csv": "9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d",
+    "model_sha256_v1": "68b0defa2b8ad78e682489b3cadb03fd04368c06accacaf3fcd544d864a5cdfa",
+    "referencia_v2.csv": "893252fcff2db4159bceead52d6b885714834d34ab7abe7cefa01f4e396dfa2c",
+    "model_sha256_v2": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b"
+  }
+}

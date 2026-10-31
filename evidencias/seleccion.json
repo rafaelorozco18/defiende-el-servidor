@@ -1,0 +1,134 @@
+{
+  "version_elegida": "v2",
+  "fecha_decision_utc": "2026-10-31T13:28:44+00:00",
+  "datos_usados_para_decidir": "solo validación (data/prepared/val.csv); test no se ha leído",
+  "regla": {
+    "metrica_modelo": "macro_f1",
+    "umbral": {
+      "regla": "maximo_recall_con_fpr",
+      "fpr_max": 0.05,
+      "rejilla": {
+        "inicio": 0.01,
+        "fin": 0.99,
+        "paso": 0.01
+      }
+    }
+  },
+  "candidatas": [
+    {
+      "exp_id": "E1-logreg-base",
+      "run_id": "8a9c17ff6fb94677aee381b05b8e4827",
+      "macro_f1": 0.927188,
+      "recall_ataque": 0.98759,
+      "precision_ataque": 0.927292,
+      "fpr": 0.163908
+    },
+    {
+      "exp_id": "E2-logreg-log1p",
+      "run_id": "420c54b7aa0a4b479378638acd3295a1",
+      "macro_f1": 0.933009,
+      "recall_ataque": 0.975435,
+      "precision_ataque": 0.942353,
+      "fpr": 0.126304
+    },
+    {
+      "exp_id": "E3-rf",
+      "run_id": "5d3bda042ffe43cc9b814380d992c3a0",
+      "macro_f1": 0.951145,
+      "recall_ataque": 0.978112,
+      "precision_ataque": 0.960558,
+      "fpr": 0.085013
+    },
+    {
+      "exp_id": "E4-hgb",
+      "run_id": "6bb2e44a2de843f8ac5dfff5c77cc865",
+      "macro_f1": 0.953495,
+      "recall_ataque": 0.975605,
+      "precision_ataque": 0.965429,
+      "fpr": 0.073947
+    }
+  ],
+  "v2": {
+    "exp_id": "E4-hgb",
+    "run_id": "6bb2e44a2de843f8ac5dfff5c77cc865",
+    "familia": "arboles",
+    "modelo": "hist_gradient_boosting",
+    "preproc": "ordinal",
+    "git_commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "model_sha256": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b",
+    "umbral": 0.64,
+    "regla_decision": "ataque si score_attack >= umbral",
+    "metricas_val": {
+      "recall_ataque": 0.959709294912661,
+      "precision_ataque": 0.9766446087971974,
+      "fpr": 0.04857862540482188,
+      "macro_f1": 0.9511892561326167,
+      "accuracy": 0.9570500793765334,
+      "matriz_confusion": {
+        "tn": 10576,
+        "fp": 540,
+        "fn": 948,
+        "tp": 22581
+      },
+      "n": 34645,
+      "denominadores_cero": []
+    },
+    "razon": "E4-hgb tiene el mayor macro-F1 en validación a umbral 0.5 (0.9535). Su FPR a 0.5 (0.0739) supera el máximo operativo de 0.05; el umbral 0.64 es el que da mayor recall de ataque con FPR <= 0.05 en validación.",
+    "huggingface": {
+      "repo": null,
+      "revision_sha": null,
+      "tag": null
+    }
+  },
+  "v2_a_umbral_0_5": {
+    "recall_ataque": 0.9756045730800289,
+    "precision_ataque": 0.9654287757076166,
+    "fpr": 0.07394746311622886,
+    "macro_f1": 0.9534946367331502,
+    "accuracy": 0.9597055852215327,
+    "matriz_confusion": {
+      "tn": 10294,
+      "fp": 822,
+      "fn": 574,
+      "tp": 22955
+    },
+    "n": 34645,
+    "denominadores_cero": []
+  },
+  "v1_referencia": {
+    "exp_id": "E1-logreg-base",
+    "run_id": "8a9c17ff6fb94677aee381b05b8e4827",
+    "umbral": 0.5,
+    "model_sha256": "68b0defa2b8ad78e682489b3cadb03fd04368c06accacaf3fcd544d864a5cdfa",
+    "metricas_val": {
+      "recall_ataque": 0.9875897828211994,
+      "precision_ataque": 0.9272915918432499,
+      "fpr": 0.16390788053256566,
+      "macro_f1": 0.9271877885590118,
+      "accuracy": 0.9389810939529514,
+      "matriz_confusion": {
+        "tn": 9294,
+        "fp": 1822,
+        "fn": 292,
+        "tp": 23237
+      },
+      "n": 34645,
+      "denominadores_cero": []
+    }
+  },
+  "cambio_v1_a_v2": {
+    "modelo": "logreg -> hist_gradient_boosting",
+    "preprocesamiento": "base -> ordinal",
+    "umbral": "0.5 -> 0.64",
+    "delta_val": {
+      "recall_ataque": -0.02788,
+      "precision_ataque": 0.049353,
+      "fpr": -0.115329,
+      "macro_f1": 0.024001
+    }
+  },
+  "congelacion": "el commit Git que fija este archivo (con la revisión de Hugging Face) es anterior a la evaluación en test; evaluar_test.py lo verifica y lo registra en metricas-test.json"
+}

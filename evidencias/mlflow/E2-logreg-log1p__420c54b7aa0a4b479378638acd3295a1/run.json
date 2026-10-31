@@ -1,0 +1,61 @@
+{
+  "run_id": "420c54b7aa0a4b479378638acd3295a1",
+  "run_name": "E2-logreg-log1p",
+  "experiment_id": "1",
+  "status": "FINISHED",
+  "start_time_ms": 1793453276700,
+  "end_time_ms": 1793453277403,
+  "artifact_uri": "<repo>/mlruns/1/420c54b7aa0a4b479378638acd3295a1/artifacts",
+  "params": {
+    "modelo": "logreg",
+    "preproc": "log1p",
+    "semilla": "42",
+    "umbral": "0.5",
+    "n_train": "139756",
+    "n_val": "34645",
+    "modelo__C": "1.0",
+    "modelo__max_iter": "3000"
+  },
+  "metrics": {
+    "val_recall_ataque": 0.9754345701049768,
+    "val_precision_ataque": 0.9423526996509957,
+    "val_fpr": 0.1263044260525369,
+    "val_f1_ataque": 0.9586083033998831,
+    "val_f1_normal": 0.9074091376249649,
+    "val_macro_f1": 0.933008720512424,
+    "val_accuracy": 0.9427911675566459,
+    "val_tn": 9712.0,
+    "val_fp": 1404.0,
+    "val_fn": 578.0,
+    "val_tp": 22951.0,
+    "tiempo_entrenamiento_s": 19.429691177996574,
+    "tamano_modelo_mb": 0.005701
+  },
+  "tags": {
+    "mlflow.user": "rafaelorozco",
+    "mlflow.source.name": "/home/rafaelorozco/code/defiende-el-servidor/src/defiende/entrenar.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "mlflow.source.git.branch": "main",
+    "mlflow.runName": "E2-logreg-log1p",
+    "exp_id": "E2-logreg-log1p",
+    "familia": "lineal",
+    "hipotesis": "Comprimir las colas pesadas (bytes, cargas, tiempos) con log1p hará más lineales las relaciones y reducirá falsos positivos frente a E1 con el mismo estimador.",
+    "cambio": "Respecto a E1, se aplica log1p a las variables numéricas (único cambio).",
+    "git_commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "git_sucio": "False",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "model_sha256": "a1f9752d9799eee30e6bc232f5c29f522115cb989cf323753c7700bb1c14dd3e",
+    "python": "3.12.14",
+    "sklearn": "1.9.1",
+    "conclusion": "Hipótesis confirmada: log1p reduce la FPR de 0.164 a 0.126 y sube macro-F1 (0.927 -> 0.933) con el mismo estimador; a cambio pierde algo de recall (0.988 -> 0.975). Sigue limitada por ser lineal."
+  },
+  "artefactos": [
+    "joblib",
+    "metricas_val.json",
+    "val_scores.csv",
+    "joblib/model.joblib"
+  ]
+}

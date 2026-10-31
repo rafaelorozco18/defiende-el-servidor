@@ -1,0 +1,63 @@
+{
+  "run_id": "6bb2e44a2de843f8ac5dfff5c77cc865",
+  "run_name": "E4-hgb",
+  "experiment_id": "1",
+  "status": "FINISHED",
+  "start_time_ms": 1793453310367,
+  "end_time_ms": 1793453311046,
+  "artifact_uri": "<repo>/mlruns/1/6bb2e44a2de843f8ac5dfff5c77cc865/artifacts",
+  "params": {
+    "modelo": "hist_gradient_boosting",
+    "preproc": "ordinal",
+    "semilla": "42",
+    "umbral": "0.5",
+    "n_train": "139756",
+    "n_val": "34645",
+    "modelo__max_iter": "300",
+    "modelo__learning_rate": "0.1",
+    "modelo__max_leaf_nodes": "63",
+    "modelo__early_stopping": "False"
+  },
+  "metrics": {
+    "val_recall_ataque": 0.9756045730800289,
+    "val_precision_ataque": 0.9654287757076166,
+    "val_fpr": 0.07394746311622886,
+    "val_f1_ataque": 0.9704900012683382,
+    "val_f1_normal": 0.9364992721979621,
+    "val_macro_f1": 0.9534946367331502,
+    "val_accuracy": 0.9597055852215327,
+    "val_tn": 10294.0,
+    "val_fp": 822.0,
+    "val_fn": 574.0,
+    "val_tp": 22955.0,
+    "tiempo_entrenamiento_s": 9.712208343000384,
+    "tamano_modelo_mb": 0.98575
+  },
+  "tags": {
+    "mlflow.user": "rafaelorozco",
+    "mlflow.source.name": "/home/rafaelorozco/code/defiende-el-servidor/src/defiende/entrenar.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "mlflow.source.git.branch": "main",
+    "mlflow.runName": "E4-hgb",
+    "exp_id": "E4-hgb",
+    "familia": "arboles",
+    "hipotesis": "El boosting por histogramas corrige errores residuales del bosque y logra un macro-F1 igual o mayor con un artefacto mucho más pequeño.",
+    "cambio": "Respecto a E3, boosting secuencial en lugar de bagging.",
+    "git_commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "git_sucio": "False",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "model_sha256": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b",
+    "python": "3.12.14",
+    "sklearn": "1.9.1",
+    "conclusion": "Hipótesis confirmada: mejor macro-F1 (0.953) y menor FPR (0.074) de los cuatro con un artefacto de ~1 MB. Recall similar a E3. Es la candidata para v2 según la regla de selección."
+  },
+  "artefactos": [
+    "joblib",
+    "metricas_val.json",
+    "val_scores.csv",
+    "joblib/model.joblib"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "run_id": "5d3bda042ffe43cc9b814380d992c3a0",
+  "run_name": "E3-rf",
+  "experiment_id": "1",
+  "status": "FINISHED",
+  "start_time_ms": 1793453294245,
+  "end_time_ms": 1793453295434,
+  "artifact_uri": "<repo>/mlruns/1/5d3bda042ffe43cc9b814380d992c3a0/artifacts",
+  "params": {
+    "modelo": "random_forest",
+    "preproc": "ordinal",
+    "semilla": "42",
+    "umbral": "0.5",
+    "n_train": "139756",
+    "n_val": "34645",
+    "modelo__n_estimators": "150",
+    "modelo__min_samples_leaf": "2",
+    "modelo__max_features": "sqrt",
+    "modelo__n_jobs": "-1"
+  },
+  "metrics": {
+    "val_recall_ataque": 0.9781121169620468,
+    "val_precision_ataque": 0.9605576192662465,
+    "val_fpr": 0.08501259445843828,
+    "val_f1_ataque": 0.9692553908355795,
+    "val_f1_normal": 0.9330336666360883,
+    "val_macro_f1": 0.951144528735834,
+    "val_accuracy": 0.9578582768076201,
+    "val_tn": 10171.0,
+    "val_fp": 945.0,
+    "val_fn": 515.0,
+    "val_tp": 23014.0,
+    "tiempo_entrenamiento_s": 11.32634512198274,
+    "tamano_modelo_mb": 17.45521
+  },
+  "tags": {
+    "mlflow.user": "rafaelorozco",
+    "mlflow.source.name": "/home/rafaelorozco/code/defiende-el-servidor/src/defiende/entrenar.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "mlflow.source.git.branch": "main",
+    "mlflow.runName": "E3-rf",
+    "exp_id": "E3-rf",
+    "familia": "arboles",
+    "hipotesis": "Un bosque aleatorio captura interacciones no lineales (p. ej. ttl x estado) y superará a la familia lineal en macro-F1 sin necesidad de transformar escalas.",
+    "cambio": "Cambio de familia a ensamble de árboles (bagging).",
+    "git_commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "git_sucio": "False",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "model_sha256": "feb2ab1a357d71e0d2a66b6d1151ffec5b0a775f4fcb51d843e92a30a50ea534",
+    "python": "3.12.14",
+    "sklearn": "1.9.1",
+    "conclusion": "Hipótesis confirmada: el bosque supera a la familia lineal (macro-F1 0.951, FPR 0.085) sin escalar variables. Artefacto de 17 MB."
+  },
+  "artefactos": [
+    "joblib",
+    "metricas_val.json",
+    "val_scores.csv",
+    "joblib/model.joblib"
+  ]
+}

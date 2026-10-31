@@ -33,5 +33,40 @@
       "revision_sha": null,
       "tag": null
     }
+  },
+  "v2": {
+    "exp_id": "E4-hgb",
+    "run_id": "6bb2e44a2de843f8ac5dfff5c77cc865",
+    "familia": "arboles",
+    "modelo": "hist_gradient_boosting",
+    "preproc": "ordinal",
+    "git_commit": "cd74ed860fc4c812e886272a6de16a82809ecfc9",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "model_sha256": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b",
+    "umbral": 0.64,
+    "regla_decision": "ataque si score_attack >= umbral",
+    "metricas_val": {
+      "recall_ataque": 0.959709294912661,
+      "precision_ataque": 0.9766446087971974,
+      "fpr": 0.04857862540482188,
+      "macro_f1": 0.9511892561326167,
+      "accuracy": 0.9570500793765334,
+      "matriz_confusion": {
+        "tn": 10576,
+        "fp": 540,
+        "fn": 948,
+        "tp": 22581
+      },
+      "n": 34645,
+      "denominadores_cero": []
+    },
+    "razon": "E4-hgb tiene el mayor macro-F1 en validación a umbral 0.5 (0.9535). Su FPR a 0.5 (0.0739) supera el máximo operativo de 0.05; el umbral 0.64 es el que da mayor recall de ataque con FPR <= 0.05 en validación.",
+    "huggingface": {
+      "repo": null,
+      "revision_sha": null,
+      "tag": null
+    }
   }
 }

@@ -3,3 +3,12 @@
 E1-logreg-base: >-
   Referencia funcional: recall de ataque muy alto (0.988) pero FPR de 0.164, es decir, 1 de cada 6
   conexiones normales se alertaría. La frontera lineal confunde tráfico normal voluminoso con ataques.
+E2-logreg-log1p: >-
+  Hipótesis confirmada: log1p reduce la FPR de 0.164 a 0.126 y sube macro-F1 (0.927 -> 0.933) con el
+  mismo estimador; a cambio pierde algo de recall (0.988 -> 0.975). Sigue limitada por ser lineal.
+E3-rf: >-
+  Hipótesis confirmada: el bosque supera a la familia lineal (macro-F1 0.951, FPR 0.085) sin escalar
+  variables. Artefacto de 17 MB.
+E4-hgb: >-
+  Hipótesis confirmada: mejor macro-F1 (0.953) y menor FPR (0.074) de los cuatro con un artefacto de
+  ~1 MB. Recall similar a E3. Es la candidata para v2 según la regla de selección.
