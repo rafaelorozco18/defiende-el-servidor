@@ -12,3 +12,9 @@ experimentos:
     hipotesis: >-
       Una regresión logística con one-hot y escalado separa buena parte del tráfico,
       pero las variables de conteo/bytes con colas pesadas limitarán su frontera lineal.
+
+# Primera solución funcional: la referencia con el umbral por defecto.
+v1:
+  exp_id: E1-logreg-base
+  umbral: 0.5
+  razon: Primera solución funcional y referencia sencilla; umbral por defecto 0.5 sin ajustar.

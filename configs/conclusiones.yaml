@@ -1,0 +1,5 @@
+# Interpretación de cada run en validación (umbral 0.5). Se escribe después de ver los resultados
+# y se copia a experimentos.csv y como tag `conclusion` en MLflow.
+E1-logreg-base: >-
+  Referencia funcional: recall de ataque muy alto (0.988) pero FPR de 0.164, es decir, 1 de cada 6
+  conexiones normales se alertaría. La frontera lineal confunde tráfico normal voluminoso con ataques.

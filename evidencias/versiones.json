@@ -1,0 +1,37 @@
+{
+  "v1": {
+    "exp_id": "E1-logreg-base",
+    "run_id": "8a9c17ff6fb94677aee381b05b8e4827",
+    "familia": "lineal",
+    "modelo": "logreg",
+    "preproc": "base",
+    "git_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "model_sha256": "68b0defa2b8ad78e682489b3cadb03fd04368c06accacaf3fcd544d864a5cdfa",
+    "umbral": 0.5,
+    "regla_decision": "ataque si score_attack >= umbral",
+    "metricas_val": {
+      "recall_ataque": 0.9875897828211994,
+      "precision_ataque": 0.9272915918432499,
+      "fpr": 0.16390788053256566,
+      "macro_f1": 0.9271877885590118,
+      "accuracy": 0.9389810939529514,
+      "matriz_confusion": {
+        "tn": 9294,
+        "fp": 1822,
+        "fn": 292,
+        "tp": 23237
+      },
+      "n": 34645,
+      "denominadores_cero": []
+    },
+    "razon": "Primera solución funcional y referencia sencilla; umbral por defecto 0.5 sin ajustar.",
+    "huggingface": {
+      "repo": null,
+      "revision_sha": null,
+      "tag": null
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "run_id": "8a9c17ff6fb94677aee381b05b8e4827",
+  "run_name": "E1-logreg-base",
+  "experiment_id": "1",
+  "status": "FINISHED",
+  "start_time_ms": 1793453184455,
+  "end_time_ms": 1793453185108,
+  "artifact_uri": "<repo>/mlruns/1/8a9c17ff6fb94677aee381b05b8e4827/artifacts",
+  "params": {
+    "modelo": "logreg",
+    "preproc": "base",
+    "semilla": "42",
+    "umbral": "0.5",
+    "n_train": "139756",
+    "n_val": "34645",
+    "modelo__C": "1.0",
+    "modelo__max_iter": "3000"
+  },
+  "metrics": {
+    "val_recall_ataque": 0.9875897828211994,
+    "val_precision_ataque": 0.9272915918432499,
+    "val_fpr": 0.16390788053256566,
+    "val_f1_ataque": 0.9564913147279164,
+    "val_f1_normal": 0.8978842623901073,
+    "val_macro_f1": 0.9271877885590118,
+    "val_accuracy": 0.9389810939529514,
+    "val_tn": 9294.0,
+    "val_fp": 1822.0,
+    "val_fn": 292.0,
+    "val_tp": 23237.0,
+    "tiempo_entrenamiento_s": 17.368609238998033,
+    "tamano_modelo_mb": 0.005525
+  },
+  "tags": {
+    "mlflow.user": "rafaelorozco",
+    "mlflow.source.name": "/home/rafaelorozco/code/defiende-el-servidor/src/defiende/entrenar.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "mlflow.source.git.branch": "main",
+    "mlflow.runName": "E1-logreg-base",
+    "exp_id": "E1-logreg-base",
+    "familia": "lineal",
+    "hipotesis": "Una regresión logística con one-hot y escalado separa buena parte del tráfico, pero las variables de conteo/bytes con colas pesadas limitarán su frontera lineal.",
+    "cambio": "Referencia sencilla (sin cambio previo).",
+    "git_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "git_sucio": "False",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_prepared_md5": "731ffba210f38c4b5fed86beb0d6eff7.dir",
+    "dvc_commit": "d7011d2272daf4fab8555744bbcaeebe49f5cf08",
+    "model_sha256": "68b0defa2b8ad78e682489b3cadb03fd04368c06accacaf3fcd544d864a5cdfa",
+    "python": "3.12.14",
+    "sklearn": "1.9.1",
+    "conclusion": "Referencia funcional: recall de ataque muy alto (0.988) pero FPR de 0.164, es decir, 1 de cada 6 conexiones normales se alertaría. La frontera lineal confunde tráfico normal voluminoso con ataques."
+  },
+  "artefactos": [
+    "joblib",
+    "metricas_val.json",
+    "val_scores.csv",
+    "joblib/model.joblib"
+  ]
+}
