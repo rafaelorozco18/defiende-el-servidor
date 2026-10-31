@@ -1,5 +1,5 @@
-# Configuraciones de experimentos. Todas usan la misma partición (data/prepared) y se comparan
-# en validación con umbral 0.5.
+# Cuatro configuraciones, dos familias (lineal y árboles). Todas usan la misma partición
+# (data/prepared) y se comparan en validación con umbral 0.5.
 semilla: 42
 
 experimentos:
@@ -13,8 +13,46 @@ experimentos:
       Una regresión logística con one-hot y escalado separa buena parte del tráfico,
       pero las variables de conteo/bytes con colas pesadas limitarán su frontera lineal.
 
+  E2-logreg-log1p:
+    familia: lineal
+    modelo: logreg
+    preproc: log1p           # log1p sobre numéricas antes de escalar
+    params: {C: 1.0, max_iter: 3000}
+    cambio: Respecto a E1, se aplica log1p a las variables numéricas (único cambio).
+    hipotesis: >-
+      Comprimir las colas pesadas (bytes, cargas, tiempos) con log1p hará más lineales
+      las relaciones y reducirá falsos positivos frente a E1 con el mismo estimador.
+
+  E3-rf:
+    familia: arboles
+    modelo: random_forest
+    preproc: ordinal         # codificación ordinal de categóricas, numéricas sin escalar
+    params: {n_estimators: 150, min_samples_leaf: 2, max_features: sqrt, n_jobs: -1}
+    cambio: Cambio de familia a ensamble de árboles (bagging).
+    hipotesis: >-
+      Un bosque aleatorio captura interacciones no lineales (p. ej. ttl x estado) y
+      superará a la familia lineal en macro-F1 sin necesidad de transformar escalas.
+
+  E4-hgb:
+    familia: arboles
+    modelo: hist_gradient_boosting
+    preproc: ordinal
+    params: {max_iter: 300, learning_rate: 0.1, max_leaf_nodes: 63, early_stopping: false}
+    cambio: Respecto a E3, boosting secuencial en lugar de bagging.
+    hipotesis: >-
+      El boosting por histogramas corrige errores residuales del bosque y logra un
+      macro-F1 igual o mayor con un artefacto mucho más pequeño.
+
 # Primera solución funcional: la referencia con el umbral por defecto.
 v1:
   exp_id: E1-logreg-base
   umbral: 0.5
   razon: Primera solución funcional y referencia sencilla; umbral por defecto 0.5 sin ajustar.
+
+# Regla para v2 declarada ANTES de entrenar E2-E4. Solo usa validación.
+seleccion:
+  metrica_modelo: macro_f1         # se elige la configuración con mayor macro-F1 a umbral 0.5
+  umbral:
+    regla: maximo_recall_con_fpr   # mayor recall de ataque sujeto a FPR <= fpr_max
+    fpr_max: 0.05
+    rejilla: {inicio: 0.01, fin: 0.99, paso: 0.01}
