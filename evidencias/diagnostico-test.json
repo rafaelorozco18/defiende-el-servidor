@@ -1,0 +1,188 @@
+{
+  "nota": "Análisis posterior a la evaluación única de test; no se usó para elegir modelo ni umbral.",
+  "umbral": 0.64,
+  "fpr_por_state": {
+    "val": {
+      "FIN": {
+        "normales": 7486,
+        "fpr": 0.054
+      },
+      "CON": {
+        "normales": 2431,
+        "fpr": 0.0
+      },
+      "INT": {
+        "normales": 1002,
+        "fpr": 0.1327
+      },
+      "REQ": {
+        "normales": 182,
+        "fpr": 0.0165
+      },
+      "RST": {
+        "normales": 14,
+        "fpr": 0.0
+      },
+      "ECO": {
+        "normales": 1,
+        "fpr": 0.0
+      }
+    },
+    "test": {
+      "FIN": {
+        "normales": 24172,
+        "fpr": 0.2023
+      },
+      "CON": {
+        "normales": 6633,
+        "fpr": 0.0006
+      },
+      "INT": {
+        "normales": 4485,
+        "fpr": 0.5779
+      },
+      "REQ": {
+        "normales": 1707,
+        "fpr": 0.0088
+      },
+      "ACC": {
+        "normales": 2,
+        "fpr": 0.0
+      },
+      "RST": {
+        "normales": 1,
+        "fpr": 1.0
+      }
+    }
+  },
+  "fpr_por_service": {
+    "val": {
+      "-": {
+        "normales": 7234,
+        "fpr": 0.0601
+      },
+      "dns": {
+        "normales": 1487,
+        "fpr": 0.0
+      },
+      "http": {
+        "normales": 1072,
+        "fpr": 0.0644
+      },
+      "ftp-data": {
+        "normales": 501,
+        "fpr": 0.0
+      },
+      "smtp": {
+        "normales": 301,
+        "fpr": 0.0066
+      },
+      "ftp": {
+        "normales": 268,
+        "fpr": 0.1269
+      },
+      "ssh": {
+        "normales": 253,
+        "fpr": 0.0
+      }
+    },
+    "test": {
+      "-": {
+        "normales": 27375,
+        "fpr": 0.2274
+      },
+      "http": {
+        "normales": 4013,
+        "fpr": 0.2584
+      },
+      "dns": {
+        "normales": 3068,
+        "fpr": 0.0003
+      },
+      "ftp-data": {
+        "normales": 949,
+        "fpr": 0.0
+      },
+      "ftp": {
+        "normales": 758,
+        "fpr": 0.3113
+      },
+      "smtp": {
+        "normales": 635,
+        "fpr": 0.0
+      },
+      "ssh": {
+        "normales": 200,
+        "fpr": 0.0
+      },
+      "radius": {
+        "normales": 2,
+        "fpr": 1.0
+      }
+    }
+  },
+  "mezcla_trafico_normal": {
+    "state": {
+      "val": {
+        "FIN": 0.6734,
+        "CON": 0.2187,
+        "INT": 0.0901,
+        "REQ": 0.0164,
+        "RST": 0.0013
+      },
+      "test": {
+        "FIN": 0.6533,
+        "CON": 0.1793,
+        "INT": 0.1212,
+        "REQ": 0.0461,
+        "ACC": 0.0001
+      }
+    },
+    "service": {
+      "val": {
+        "-": 0.6508,
+        "dns": 0.1338,
+        "http": 0.0964,
+        "ftp-data": 0.0451,
+        "smtp": 0.0271
+      },
+      "test": {
+        "-": 0.7399,
+        "http": 0.1085,
+        "dns": 0.0829,
+        "ftp-data": 0.0256,
+        "ftp": 0.0205
+      }
+    }
+  },
+  "test_por_solapamiento": {
+    "con_entradas_vistas_en_train_val": {
+      "recall_ataque": 0.998017839444995,
+      "precision_ataque": 0.9615332151138999,
+      "fpr": 0.2256,
+      "macro_f1": 0.9234096943021359,
+      "n": 8313
+    },
+    "sin_solapamiento": {
+      "recall_ataque": 0.966212861585095,
+      "precision_ataque": 0.8366367997103811,
+      "fpr": 0.20195804195804196,
+      "macro_f1": 0.8834717752576775,
+      "n": 74019
+    }
+  },
+  "score_normales_cuantiles": {
+    "val": {
+      "0.5": 0.0,
+      "0.8": 0.0029,
+      "0.9": 0.3885,
+      "0.95": 0.6321
+    },
+    "test": {
+      "0.5": 0.0006,
+      "0.8": 0.647,
+      "0.9": 0.8518,
+      "0.95": 0.9311
+    }
+  }
+}

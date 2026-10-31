@@ -16,12 +16,34 @@ from huggingface_hub import HfApi
 from .comun import EVIDENCIAS, RAIZ, guardar_json, sha256_archivo
 
 
+def actualizar_card(version: str, repo: str) -> None:
+    """Revisión de solo documentación; verifica que model.joblib sigue siendo el artefacto congelado."""
+    carpeta = RAIZ / "hf" / version
+    config = json.loads((carpeta / "config.json").read_text(encoding="utf-8"))
+    api = HfApi()
+    info = api.upload_file(path_or_fileobj=str(carpeta / "README.md"), path_in_repo="README.md", repo_id=repo,
+                           commit_message=f"{version}: model card con la evaluación final en test (modelo sin cambios)")
+    archivos = {f.path: f for f in api.list_repo_tree(repo, revision=info.oid)}
+    if archivos["model.joblib"].lfs.sha256 != config["model_sha256"]:
+        raise SystemExit("model.joblib cambió: la revisión de documentación no es válida")
+    ruta = EVIDENCIAS / "versiones.json"
+    doc = json.loads(ruta.read_text(encoding="utf-8"))
+    doc[version]["huggingface"]["revision_documentacion"] = {
+        "sha": info.oid, "cambio": "solo README.md (resultado de test)", "model_sha256_verificado": config["model_sha256"]}
+    guardar_json(doc, ruta)
+    print(f"model card actualizada: {repo}@{info.oid}; model.joblib intacto ({config['model_sha256'][:12]}…)")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--version", choices=["v1", "v2"], required=True)
     ap.add_argument("--repo", required=True)
     ap.add_argument("--privado", action="store_true")
+    ap.add_argument("--solo-card", action="store_true", help="sube solo README.md (no cambia el modelo ni los tags)")
     args = ap.parse_args()
+    if args.solo_card:
+        actualizar_card(args.version, args.repo)
+        return
 
     carpeta = RAIZ / "hf" / args.version
     config = json.loads((carpeta / "config.json").read_text(encoding="utf-8"))

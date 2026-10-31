@@ -56,10 +56,28 @@ def model_card(version: str, v: dict, sel: dict, repo: str, github: str, auditor
             "solo usa validación. Las métricas de validación de v2 son algo optimistas porque el umbral se "
             "eligió sobre esa misma partición.\n"
         )
-    seccion_test = ("v1 no se evalúa en test: la comparación v1/v2 se hace solo con validación."
-                    if version == "v1" else
-                    "Pendiente. La selección se congela antes de evaluar; el resultado se agregará aquí en una "
-                    "revisión de solo documentación, sin cambiar `model.joblib`.")
+    ruta_test = EVIDENCIAS / "metricas-test.json"
+    if version == "v1":
+        seccion_test = "v1 no se evalúa en test: la comparación v1/v2 se hace solo con validación."
+    elif ruta_test.exists():
+        mt = json.loads(ruta_test.read_text(encoding="utf-8"))
+        seccion_test = (
+            f"Evaluación única sobre las {mt['dataset']['filas_evaluadas']} filas de UNSW_NB15_testing-set.csv "
+            f"(sin eliminar filas), con la solución congelada en el commit `{mt['seleccion_congelada']['commit']}`.\n\n"
+            f"- Revisión evaluada: `{mt['huggingface_revision_evaluada']}`\n"
+            f"- sha256 de `model.joblib` evaluado: `{mt['model_sha256']}` (esta revisión de documentación no lo cambia)\n"
+            f"- sha256 del archivo de test: `{mt['dataset']['sha256_original']}`\n\n"
+            f"{tabla_metricas(mt['metricas'])}\n"
+            "**El resultado empeora frente a validación** (FPR de 0.049 a 0.203): el tráfico normal del archivo de "
+            "test recibe puntuaciones más altas que el de validación (percentil 90 del score de normales: 0.39 en "
+            "validación, 0.85 en test), sobre todo en conexiones con estado FIN e INT. Las filas de test sin "
+            "solapamiento con train/val tienen la misma FPR, así que no se explica por fuga. Es un cambio de "
+            "distribución entre las particiones publicadas; se conserva el resultado sin reajustar el umbral. "
+            "Detalle en `evidencias/diagnostico-test.json` del repo de código."
+        )
+    else:
+        seccion_test = ("Pendiente. La selección se congela antes de evaluar; el resultado se agregará aquí en una "
+                        "revisión de solo documentación, sin cambiar `model.joblib`.")
     return f"""---
 library_name: sklearn
 tags:

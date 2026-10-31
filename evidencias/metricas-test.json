@@ -1,0 +1,61 @@
+{
+  "version": "v2",
+  "exp_id": "E4-hgb",
+  "mlflow_run_id": "6bb2e44a2de843f8ac5dfff5c77cc865",
+  "huggingface_repo": "Rafoniloni/defiende-el-servidor-unsw",
+  "huggingface_revision_evaluada": "64fc9774c0779005d65f79c769a4def98258065a",
+  "model_sha256": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b",
+  "umbral": 0.64,
+  "regla_decision": "y_pred = 1 (ataque) si score_attack >= umbral; score_attack = predict_proba[:, 1]",
+  "clase_positiva": "1 = ataque",
+  "dataset": {
+    "archivo_original": "data/raw/UNSW_NB15_testing-set.csv",
+    "sha256_original": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "archivo_evaluado": "data/prepared/test.csv",
+    "sha256_evaluado": "860ef18eb65e6529a06a2ffe4e03f9efa49d47d487053dfe2fc98835d80ce1a8",
+    "filas_evaluadas": 82332,
+    "filas_eliminadas": 0
+  },
+  "seleccion_congelada": {
+    "commit": "2f82c1bbf6f9afac4037a0175b12be102b8241c0",
+    "fecha": "2026-10-31T08:50:13-05:00"
+  },
+  "evaluado_utc": "2026-10-31T13:51:27+00:00",
+  "codigo_evaluacion_commit": "2f82c1bbf6f9afac4037a0175b12be102b8241c0",
+  "predicciones": {
+    "archivo": "evidencias/predicciones-test.csv",
+    "sha256": "65197c5b8ecba2b131d3f9e292ad67f4186c7225184195eaa9d1c8b4d3865ada"
+  },
+  "metricas": {
+    "recall_ataque": 0.9711682696549898,
+    "precision_ataque": 0.8544064276981,
+    "fpr": 0.20275675675675675,
+    "f1_ataque": 0.9090533662333907,
+    "f1_normal": 0.8700833271882605,
+    "macro_f1": 0.8895683467108256,
+    "accuracy": 0.893006364475538,
+    "matriz_confusion": {
+      "tn": 29498,
+      "fp": 7502,
+      "fn": 1307,
+      "tp": 44025
+    },
+    "n": 82332,
+    "denominadores_cero": []
+  },
+  "metricas_val_misma_solucion": {
+    "recall_ataque": 0.959709294912661,
+    "precision_ataque": 0.9766446087971974,
+    "fpr": 0.04857862540482188,
+    "macro_f1": 0.9511892561326167,
+    "accuracy": 0.9570500793765334,
+    "matriz_confusion": {
+      "tn": 10576,
+      "fp": 540,
+      "fn": 948,
+      "tp": 22581
+    },
+    "n": 34645,
+    "denominadores_cero": []
+  }
+}

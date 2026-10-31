@@ -1,0 +1,78 @@
+
+=== 2026-10-31T13:50:21Z · Entorno
+carpeta nueva: /tmp/defiende-recuperacion-xO7cNe
+Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+uv 0.12.21 (x86_64-unknown-linux-gnu)
+git version 2.53.0
+
+=== 2026-10-31T13:50:21Z · 1. Código: clonar y fijar revisión 2f82c1b
+commit: 2f82c1bbf6f9afac4037a0175b12be102b8241c0
+
+real	0m10.399s
+user	0m5.017s
+sys	0m13.115s
+Python 3.12.14
+
+=== 2026-10-31T13:50:32Z · 2. Datos: dvc pull desde el remote entregado (caché vacía)
+hfstore 
+https://huggingface.co/datasets/Rafoniloni/defiende-el-servidor-dvc/resolve/main
+(default)
+caché DVC vacía antes del pull
+A       data/prepared/
+A       data/raw/
+8 files fetched and 6 files added
+
+real	0m22.912s
+user	0m2.152s
+sys	0m2.064s
+OK  data/raw/UNSW_NB15_training-set.csv bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa
+OK  data/raw/UNSW_NB15_testing-set.csv 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559
+OK  data/prepared/asignacion.csv 34004f802ceb27b846439884b577d294cfb3251fc2dd4d6bd1f5519a3bd04c35
+OK  data/prepared/test.csv 860ef18eb65e6529a06a2ffe4e03f9efa49d47d487053dfe2fc98835d80ce1a8
+OK  data/prepared/train.csv ba847a2b347168f01be021778a9aabf11b61d85a6c8d1997eda1103156079e56
+OK  data/prepared/val.csv f44e1552a22d3fc8906d4275ec5ee53c192fc66b2fd22ab276487a9eb754af1b
+
+=== 2026-10-31T13:51:00Z · 3-4. Modelo v1: descarga de Rafoniloni/defiende-el-servidor-unsw@264e987803bcae3aaa09c719df77fe8d726eb96d y predicción
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+v1 (E1-logreg-base, umbral 0.5, sha256 68b0defa2b8a…): 25 filas, 16 ataques -> /tmp/defiende-recuperacion-xO7cNe/salidas/recuperada_v1.csv
+
+=== 2026-10-31T13:51:06Z · 5. Comparación v1 con la salida de referencia
+{
+ "version": "v1",
+ "filas": 25,
+ "etiquetas_iguales": true,
+ "diferencia_max_score": 0.0,
+ "tolerancia": 1e-09,
+ "coincide": true,
+ "sha256_referencia": "9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d",
+ "sha256_recuperada": "9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d"
+}
+
+=== 2026-10-31T13:51:07Z · 3-4. Modelo v2: descarga de Rafoniloni/defiende-el-servidor-unsw@64fc9774c0779005d65f79c769a4def98258065a y predicción
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+v2 (E4-hgb, umbral 0.64, sha256 b32254d6bf87…): 25 filas, 16 ataques -> /tmp/defiende-recuperacion-xO7cNe/salidas/recuperada_v2.csv
+
+=== 2026-10-31T13:51:12Z · 5. Comparación v2 con la salida de referencia
+{
+ "version": "v2",
+ "filas": 25,
+ "etiquetas_iguales": true,
+ "diferencia_max_score": 0.0,
+ "tolerancia": 1e-09,
+ "coincide": true,
+ "sha256_referencia": "893252fcff2db4159bceead52d6b885714834d34ab7abe7cefa01f4e396dfa2c",
+ "sha256_recuperada": "893252fcff2db4159bceead52d6b885714834d34ab7abe7cefa01f4e396dfa2c"
+}
+
+=== 2026-10-31T13:51:12Z · Hashes
+b3161ac7bcf48f4d4b83e1202cda4c63ef6315cafb1657103418a79d680c7c34  evidencias/recuperacion/entrada_val.csv
+9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d  evidencias/recuperacion/referencia_v1.csv
+893252fcff2db4159bceead52d6b885714834d34ab7abe7cefa01f4e396dfa2c  evidencias/recuperacion/referencia_v2.csv
+b9711555cd64b38c308fb5c02c986c34339e77905bedfabc7c7f8b83dbfdf389  salidas/comparacion_v1.json
+464c993d982d51945271f6dad87106c4c263287ee45e42caa2341b7c9b4919cb  salidas/comparacion_v2.json
+9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d  salidas/recuperada_v1.csv
+893252fcff2db4159bceead52d6b885714834d34ab7abe7cefa01f4e396dfa2c  salidas/recuperada_v2.csv
+b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b  hf-home/hub/models--Rafoniloni--defiende-el-servidor-unsw/snapshots/64fc9774c0779005d65f79c769a4def98258065a/model.joblib
+68b0defa2b8ad78e682489b3cadb03fd04368c06accacaf3fcd544d864a5cdfa  hf-home/hub/models--Rafoniloni--defiende-el-servidor-unsw/snapshots/264e987803bcae3aaa09c719df77fe8d726eb96d/model.joblib
+
+=== 2026-10-31T13:51:12Z · RESULTADO: recuperación correcta para v1 y v2 (revisión de código 2f82c1bbf6f9afac4037a0175b12be102b8241c0)

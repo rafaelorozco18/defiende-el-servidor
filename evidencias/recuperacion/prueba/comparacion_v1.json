@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "filas": 25,
+  "etiquetas_iguales": true,
+  "diferencia_max_score": 0.0,
+  "tolerancia": 1e-09,
+  "coincide": true,
+  "sha256_referencia": "9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d",
+  "sha256_recuperada": "9866bf194872f75735d2137eb5d610f031288f358dfbace5287c83b1dd09bc3d"
+}

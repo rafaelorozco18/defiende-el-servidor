@@ -70,7 +70,12 @@
       "url": "https://huggingface.co/Rafoniloni/defiende-el-servidor-unsw",
       "revision_sha": "64fc9774c0779005d65f79c769a4def98258065a",
       "tag": "v2",
-      "url_revision": "https://huggingface.co/Rafoniloni/defiende-el-servidor-unsw/tree/64fc9774c0779005d65f79c769a4def98258065a"
+      "url_revision": "https://huggingface.co/Rafoniloni/defiende-el-servidor-unsw/tree/64fc9774c0779005d65f79c769a4def98258065a",
+      "revision_documentacion": {
+        "sha": "abdccefcf0b2cc6bf5950ba9b8accd8c6ea23090",
+        "cambio": "solo README.md (resultado de test)",
+        "model_sha256_verificado": "b32254d6bf876d341287690214a015e463a9186e3186b8e28d4c5df12310ce1b"
+      }
     }
   }
 }
